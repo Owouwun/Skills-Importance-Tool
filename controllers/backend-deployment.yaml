@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: skill-importance-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skill-importance-backend
+  template:
+    metadata:
+      labels:
+        app: skill-importance-backend
+    spec:
+      containers:
+      - name: backend
+        image: seagumineko/skill-importance-backend:latest
+        imagePullPolicy: Always

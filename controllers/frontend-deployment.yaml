@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: skill-importance-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skill-importance-frontend
+  template:
+    metadata:
+      labels:
+        app: skill-importance-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: seagumineko/skill-importance-frontend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
