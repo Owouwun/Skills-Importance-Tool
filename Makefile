@@ -34,6 +34,7 @@ deploy:
 
 wait_for_pods:
 	@echo "⏳ Waiting for pods to be ready..."
+	kubectl rollout status --watch --timeout=300s ds/calico-node -n kube-system
 	kubectl rollout status --watch --timeout=300s statefulset/mongo-statefulset
 	kubectl wait --for=condition=Available deployment --namespace=$(CONTROLLERS_NAMESPACE) --all --timeout=300s
 	@echo "✅ All pods are ready!"
